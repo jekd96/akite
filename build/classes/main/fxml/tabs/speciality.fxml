@@ -1,0 +1,24 @@
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.clicker.ui.controller.tab.SpecialityController">
+    <columnConstraints>
+        <ColumnConstraints hgrow="ALWAYS" minWidth="0" prefWidth="100.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="185.0" vgrow="SOMETIMES"  />
+    </rowConstraints>
+    <children>
+        <ToolBar prefHeight="15.0" prefWidth="410.0">
+            <items>
+                <Button mnemonicParsing="false" text="Импортировать из файла" />
+                <Button mnemonicParsing="false" text="Добавить" />
+                <Button mnemonicParsing="false" text="Редактировать"  />
+                <Button mnemonicParsing="false" text="Удалить"  />
+            </items>
+        </ToolBar>
+        <TableView  prefWidth="200.0"  GridPane.rowIndex="1"  fx:id="specialityTable"  />
+    </children>
+</GridPane>

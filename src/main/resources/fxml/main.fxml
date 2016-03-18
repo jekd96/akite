@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.clicker.ui.controller.MainController">
+    <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <TabPane prefHeight="400.0" prefWidth="700.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+            <Tab text="Группы">
+                <content>
+                    <fx:include fx:id="groupsContent" source="tabs/groups.fxml" />
+                </content>
+            </Tab>
+            <Tab text="Студенты">
+                <content>
+                    <fx:include fx:id="studentsContent" source="tabs/students.fxml" />
+                </content>
+            </Tab>
+            <Tab text="Сотрудники">
+                <content>
+                    <fx:include fx:id="employeesContent" source="tabs/employees.fxml" />
+                </content>
+            </Tab>
+            <Tab text="Специальности">
+                <content>
+                    <fx:include fx:id="specialityContent" source="tabs/speciality.fxml" />
+                </content>
+            </Tab>
+            <Tab text="Должности">
+                <content>
+                    <fx:include fx:id="positionContent" source="tabs/position.fxml" />
+                </content>
+            </Tab>
+
+
+        </tabs>
+      </TabPane>
+     </children>
+</GridPane>

@@ -1,0 +1,100 @@
+buildscript {
+    ext {
+        springBootVersion = '1.2.5.RELEASE'
+        springVersion = '4.1.7.RELEASE'
+        springSecurityVersion = '4.0.2.RELEASE'
+        seleniumVersion = '2.47.1'
+    }
+    repositories {
+        mavenLocal()
+        maven {
+            name = 'BinTray'
+            url = 'http://dl.bintray.com/content/shemnon/javafx-gradle/'
+        }
+        maven {
+            name = 'CloudBees Snapshot'
+            url = 'http://repository-javafx-gradle-plugin.forge.cloudbees.com/snapshot'
+        }
+        ivy {
+            url = 'http://repository-javafx-gradle-plugin.forge.cloudbees.com/snapshot'
+        }
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("io.spring.gradle:dependency-management-plugin:0.5.3.RELEASE")
+        classpath 'org.bitbucket.shemnon.javafxplugin:gradle-javafx-plugin:8.1.2-SNAPSHOT'
+//        classpath project.files(findAntJavaFXJar())
+//        classpath project.files(findJFXJar())
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+apply plugin: 'io.spring.dependency-management'
+
+jar {
+    baseName = 'core'
+    version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile("commons-lang:commons-lang:2.3")
+    compile("joda-time:joda-time:2.8.2")
+//    compile("org.flywaydb:flyway-core:3.2.1")
+    compile("org.jfairy:jfairy:0.2.5")
+    compile("org.seleniumhq.selenium:selenium-java:$seleniumVersion")
+    compile("org.apache.commons:commons-csv:1.2")
+    compile("org.postgresql:postgresql:9.4-1200-jdbc41")
+    compile("np.com.ngopal:javafx-autocomplete-field:1.0.0")
+
+    compile("net.sf.jasperreports:jasperreports:6.1.0")
+ //   compile("net.sf.jasperreports:jasperreports-fonts:6.0.0")
+  //  compile("net.sf.jasperreports:jasperreports-extensions:3.5.3")
+
+
+    testCompile("org.testng:testng:6.9.6")
+    testCompile("com.jayway.restassured:rest-assured:2.5.0")
+    testCompile("com.jayway.restassured:spring-mock-mvc:2.5.0")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+    testCompile("org.subethamail:subethasmtp:3.1.7")
+    testCompile("org.springframework:spring-test:$springVersion")
+}
+
+configurations {
+    compile.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+}
+
+idea {
+    module {
+        inheritOutputDirs = false
+        outputDir = file("$buildDir/classes/main/")
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.7'
+}
+
+
+/*
+if (!JavaVersion.current().isJava8Compatible()) {
+    throw new GradleException("Java 8 required, ${System.getProperty("java.version")} found")
+}
+
+apply from: 'javafx.plugin'
+
+javafx {
+    mainClass = 'org.clicker.Main'
+    systemProperties = [ 'prism.disableRegionCaching':'true' ]
+}*/
